@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noname Shop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav aria-label="Main navigation">
+            <ul class="nav-list">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#trending">Trending</a></li>
+                <li class="dropdown">
+                    <p>Shop By Category</p>
+                    <ul class="dropdown-menu">
+                        <li><a href="Categories/T-Shirts.html">T-Shirts</a></li>
+                        <li><a href="Categories/Pants.html">Pants</a></li>
+                        <li><a href="Categories/Hoodies.html">Hoodies</a></li>
+                        <li><a href="Categories/Accessories.html">Accessories</a></li>
+                    </ul>
+                </li>
+                <li><a href="cart.html">Cart 🛒</a></li>
+            </ul>
+        </nav>
+        <div class="logo-below-nav">
+            <a href="index.html">
+                <img src="img/logo.png" alt="Noname E-Commerce Logo" class="site-logo">
+            </a>
+        </div>
+    </header>
+    <main>
+        <section class="hero-home">
+            <div class="hero-content">
+                <h1>Welcome to Noname Shop</h1>
+                <p>Discover the latest trends in fashion. Shop T-Shirts, Pants, Hoodies, Accessories, and more!</p>
+                <a href="#trending" class="cta-btn">Shop Trending</a>
+            </div>
+            <div class="hero-image">
+                <img src="img/blue-t-shirt.jpg" alt="Shop Fashion" style="max-width: 350px; border-radius: 16px; box-shadow: 0 8px 32px rgba(52,152,219,0.15);">
+            </div>
+        </section>
+        <section id="trending" class="featured-section">
+            <h2 class="featured-title">Trending Products</h2>
+            <div class="item-container">
+                <article class="item">
+                    <a href="product.html?id=blue-tshirt">
+                        <img src="img/blue-t-shirt.jpg" alt="Blue T-Shirt">
+                        <h2>Blue T-Shirt</h2>
+                    </a>
+                    <p class="item-price">₹664</p>
+                </article>
+                <article class="item">
+                    <a href="product.html?id=black-jeans">
+                        <img src="img/black-jeans.webp" alt="Black Jeans">
+                        <h2>Black Jeans</h2>
+                    </a>
+                    <p class="item-price">₹1494</p>
+                </article>
+                <article class="item">
+                    <a href="product.html?id=grey-hoodie">
+                        <img src="img/grey-hoodie.webp" alt="Grey Hoodie">
+                        <h2>Grey Hoodie</h2>
+                    </a>
+                    <p class="item-price">₹1162</p>
+                </article>
+                <article class="item">
+                    <a href="product.html?id=leather-belt">
+                        <img src="img/leather-belt.webp" alt="Leather Belt">
+                        <h2>Leather Belt</h2>
+                    </a>
+                    <p class="item-price">₹832</p>
+                </article>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Noname. All rights reserved.</p>
+            <ul class="footer-links">
+                <li>
+                    <a href="https://www.linkedin.com/in/rohit-chauhan-2b2385342/" target="_blank" rel="noopener noreferrer">
+                        LinkedIn
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

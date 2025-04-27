@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <link rel="stylesheet" href="style.css">  </head>
+<body>
+    <div id="product-details-container">  <div id="product-image"></div>
+        <h2 id="product-name"></h2>
+        <p id="product-description"></p>
+        <p id="product-price"></p>
+
+        <div class="product-actions">
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Noname. All rights reserved.</p>
+            <ul class="footer-links">
+                <li>
+                    <a href="https://www.linkedin.com/in/rohit-chauhan-2b2385342/" target="_blank" rel="noopener noreferrer">
+                        LinkedIn
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+
+    <script>
+        function getQueryParam(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+    
+        const productId = getQueryParam('id');
+    
+        const products = {
+            'blue-tshirt': {
+                name: 'Blue T-shirt',
+                description: 'A comfortable blue cotton t-shirt.',
+                price: 664,
+                image: 'img/blue-t-shirt.jpg'
+            },
+            'green-tshirt': {
+                name: 'Green T-shirt',
+                description: 'A comfortable green cotton t-shirt.',
+                price: 830,
+                image: 'img/green-t-shirt.jpg'
+            },
+            'red-tshirt': {
+                name: 'Red T-shirt',
+                description: 'A comfortable red cotton t-shirt.',
+                price: 730,
+                image: 'img/red-t-shirt.jpg'
+            },
+            'black-tshirt': {
+                name: 'Black T-shirt',
+                description: 'A comfortable black cotton t-shirt.',
+                price: 730,
+                image: 'img/black-t-shirt.jpg'
+            },
+            'white-tshirt': {
+                name: 'White T-shirt',
+                description: 'A comfortable white cotton t-shirt.',
+                price: 598,
+                image: 'img/white-t-shirt.jpg'
+            },
+            'gray-tshirt': {
+                name: 'Gray T-shirt',
+                description: 'A comfortable gray cotton t-shirt.',
+                price: 631,
+                image: 'img/grey-t-shirt.jpg'
+            },
+            'watch': {
+                name: 'Watch',
+                description: 'Durable watch for everyday use.',
+                price: 65.00,
+                image: '/api/placeholder/400/400'
+            },
+            'black-jeans': {
+                name: 'Black Jeans',
+                description: 'Classic black denim jeans.',
+                price: 1494,
+                image: 'img/black-jeans.webp'
+            },
+            'blue-jeans': {
+                name: 'Blue Jeans',
+                description: 'Classic blue denim jeans.',
+                price: 1328,
+                image: 'img/blue-jeans.webp'
+            },
+            'khaki-pants': {
+                name: 'Khaki Pants',
+                description: 'Classic khaki denim jeans.',
+                price: 1262,
+                image: 'img/khaki-pants.avif'
+            },
+            'cargo-pants': {
+                name: 'Cargo Pants',
+                description: 'Classic cargo denim jeans.',
+                price: 1660,
+                image: 'img/cargo-pants.avif'
+            },
+            'chino-pants': {
+                name: 'Chino Pants',
+                description: 'Classic chino denim jeans.',
+                price: 1394,
+                image: 'img/canio-pants.webp'
+            },
+            'track-pants': {
+                name: 'Track Pants',
+                description: 'Classic track denim jeans.',
+                price: 1162,
+                image: 'img/track-pants.webp'
+            },
+            'black-hoodie': {
+                name: 'Black Hoodie',
+                description: 'Comfortable black cotton hoodie.',
+                price: 1162,
+                image: 'img/black-hoodie.webp'
+            },
+            'gray-hoodie': {
+                name: 'Gray Hoodie',
+                description: 'Comfortable gray cotton hoodie.',
+                price: 1162,
+                image: 'img/grey-hoodie.webp'
+            },
+            'navy-blue-hoodie': {
+                name: 'Navy Blue Hoodie',
+                description: 'Comfortable navy blue cotton hoodie.',
+                price: 1262,
+                image: 'img/navy-blue-hoodie.webp'
+            },
+            'red-hoodie': {
+                name: 'Red Hoodie',
+                description: 'Comfortable red cotton hoodie.',
+                price: 1262,
+                image: 'img/red-hoodie.webp'
+            },
+            'green-hoodie': {
+                name: 'Green Hoodie',
+                description: 'Comfortable green cotton hoodie.',
+                price: 1262,
+                image: 'img/green-hoodie.avif'
+            },
+            'white-hoodie': {
+                name: 'White Hoodie',
+                description: 'Comfortable white cotton hoodie.',
+                price: 1162,
+                image: 'img/white-hoodie.webp'
+            },
+            'classic-backpack': {
+                name: 'Classic Backpack',
+                description: 'Durable backpack for everyday use.',
+                price: 1826,
+                image: 'img/classic-backpack.webp'
+            },
+            'beanie-hat': {
+                name: 'Beanie Hat',
+                description: 'Durable beanie hat for everyday use.',
+                price: 598,
+                image: 'img/beanie-hat.avif'
+            },
+            'leather-belt': {
+                name: 'Leather Belt',
+                description: 'Durable leather belt for everyday use.',
+                price: 832,
+                image: 'img/leather-belt.webp'
+            },
+            'sunglasses': {
+                name: 'Sunglasses',
+                description: 'Durable sunglasses for everyday use.',
+                price: 996,
+                image: 'img/sunglasses.jpg'
+            },
+            'wallet': {
+                name: 'Wallet',
+                description: 'Durable wallet for everyday use.',
+                price: 730,
+                image: 'img/wallet.jpg'
+            },
+            'flower-keychain': {
+                name: 'Flower keychain',
+                description: 'Cute flower keychain for your bag or keys.',
+                price: 2158,
+                image: 'img/Flower-keychain.jpg'
+            }
+        };
+    
+        const product = products[productId];
+    
+        if (product) {
+            document.getElementById('product-name').textContent = product.name;
+            document.getElementById('product-description').textContent = product.description;
+            document.getElementById('product-price').textContent = `₹${product.price.toFixed(2)}`;
+            document.getElementById('product-image').innerHTML = `<img src="${product.image}" alt="${product.name}">`;
+    
+            const productDetailsContainer = document.getElementById('product-details-container');
+            productDetailsContainer.classList.add('item');
+        } else {
+            document.getElementById('product-name').textContent = 'Product Not Found';
+            document.getElementById('product-description').textContent = 'Sorry, the product you are looking for could not be found.';
+        }
+    
+        // Create a reusable function to add items to cart
+        function addToCart(product) {
+            // Validate input
+            if (!product || !product.name) {
+                console.error("Invalid product data:", product);
+                return;
+            }
+            
+            // Get current cart or create empty array
+            let cart = [];
+            try {
+                const cartData = localStorage.getItem('cart');
+                if (cartData) {
+                    cart = JSON.parse(cartData);
+                    // Ensure it's an array
+                    if (!Array.isArray(cart)) {
+                        console.error("Cart is not an array, resetting");
+                        cart = [];
+                    }
+                }
+            } catch (e) {
+                console.error("Error parsing cart data:", e);
+                cart = [];
+            }
+            
+            // Check if product already exists in cart
+            const existingProductIndex = cart.findIndex(item => item.name === product.name);
+            
+            if (existingProductIndex !== -1) {
+                // Product exists, update quantity
+                cart[existingProductIndex].quantity += product.quantity;
+            } else {
+                // Product doesn't exist, add new item
+                cart.push(product);
+            }
+            
+            // Save back to localStorage
+            try {
+                localStorage.setItem('cart', JSON.stringify(cart));
+                console.log("Updated cart saved:", cart);
+            } catch (e) {
+                console.error("Error saving cart:", e);
+            }
+        }
+    
+        // Show toast notification
+        function showToast(message) {
+            // Remove existing toast if present
+            const existingToast = document.querySelector('.toast');
+            if (existingToast) {
+                existingToast.remove();
+            }
+            
+            // Create and append toast
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            
+            // Auto remove after 3 seconds
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
+        }
+    
+        // Add to Cart button logic: add to cart without redirecting to cart.html
+        document.addEventListener('DOMContentLoaded', function() {
+            const addToCartBtn = document.querySelector('.add-to-cart');
+            if (addToCartBtn && product) {
+                addToCartBtn.addEventListener('click', function() {
+                    // Prepare product object for cart
+                    const cartProduct = {
+                        name: product.name,
+                        price: product.price,
+                        image: product.image,
+                        quantity: 1
+                    };
+                    
+                    // Log for debugging
+                    console.log("Adding to cart from product page:", cartProduct);
+                    
+                    // Add to cart
+                    addToCart(cartProduct);
+                    
+                    // Show toast notification
+                    showToast(`${product.name} added to cart!`);
+                    
+                    // No redirect
+                });
+            }
+            
+            // Debug - display current cart contents
+            let currentCart = JSON.parse(localStorage.getItem('cart')) || [];
+            console.log("Current cart contents on product page:", currentCart);
+        });
+    </script>
+
+    <script src="script.js"></script>  </body>
+</html>
