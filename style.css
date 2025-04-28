@@ -1,4 +1,3 @@
-/* Cleaned CSS: Only selectors used in HTML/JS are kept */
 * {
     margin: 0;
     padding: 0;
@@ -360,7 +359,6 @@ footer ul li a:hover {
     margin-top: 20px;
 }
 
-/* Place Order and Clear Cart buttons should look like Continue Shopping button */
 .place-order-btn,
 button[onclick="clearCart()"],
 .clear-cart-btn {
