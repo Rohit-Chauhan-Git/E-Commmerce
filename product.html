@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Details</title>
-    <link rel="stylesheet" href="style.css">  </head>
+    <link rel="stylesheet" href="style.css">
+</head>
 <body>
-    <div id="product-details-container">  <div id="product-image"></div>
+    <div id="product-details-container">
+        <div id="product-image"></div>
         <h2 id="product-name"></h2>
         <p id="product-description"></p>
         <p id="product-price"></p>
@@ -197,7 +199,6 @@
             document.getElementById('product-description').textContent = product.description;
             document.getElementById('product-price').textContent = `₹${product.price.toFixed(2)}`;
             document.getElementById('product-image').innerHTML = `<img src="${product.image}" alt="${product.name}">`;
-    
             const productDetailsContainer = document.getElementById('product-details-container');
             productDetailsContainer.classList.add('item');
         } else {
@@ -205,21 +206,17 @@
             document.getElementById('product-description').textContent = 'Sorry, the product you are looking for could not be found.';
         }
     
-        // Create a reusable function to add items to cart
         function addToCart(product) {
-            // Validate input
             if (!product || !product.name) {
                 console.error("Invalid product data:", product);
                 return;
             }
             
-            // Get current cart or create empty array
             let cart = [];
             try {
                 const cartData = localStorage.getItem('cart');
                 if (cartData) {
                     cart = JSON.parse(cartData);
-                    // Ensure it's an array
                     if (!Array.isArray(cart)) {
                         console.error("Cart is not an array, resetting");
                         cart = [];
@@ -230,18 +227,14 @@
                 cart = [];
             }
             
-            // Check if product already exists in cart
             const existingProductIndex = cart.findIndex(item => item.name === product.name);
             
             if (existingProductIndex !== -1) {
-                // Product exists, update quantity
                 cart[existingProductIndex].quantity += product.quantity;
             } else {
-                // Product doesn't exist, add new item
                 cart.push(product);
             }
             
-            // Save back to localStorage
             try {
                 localStorage.setItem('cart', JSON.stringify(cart));
                 console.log("Updated cart saved:", cart);
@@ -250,57 +243,40 @@
             }
         }
     
-        // Show toast notification
         function showToast(message) {
-            // Remove existing toast if present
             const existingToast = document.querySelector('.toast');
             if (existingToast) {
                 existingToast.remove();
             }
-            
-            // Create and append toast
             const toast = document.createElement('div');
             toast.className = 'toast';
             toast.textContent = message;
             document.body.appendChild(toast);
-            
-            // Auto remove after 3 seconds
             setTimeout(() => {
                 toast.remove();
             }, 3000);
         }
     
-        // Add to Cart button logic: add to cart without redirecting to cart.html
         document.addEventListener('DOMContentLoaded', function() {
             const addToCartBtn = document.querySelector('.add-to-cart');
             if (addToCartBtn && product) {
                 addToCartBtn.addEventListener('click', function() {
-                    // Prepare product object for cart
                     const cartProduct = {
                         name: product.name,
                         price: product.price,
                         image: product.image,
                         quantity: 1
                     };
-                    
-                    // Log for debugging
                     console.log("Adding to cart from product page:", cartProduct);
-                    
-                    // Add to cart
                     addToCart(cartProduct);
-                    
-                    // Show toast notification
                     showToast(`${product.name} added to cart!`);
-                    
-                    // No redirect
                 });
             }
-            
-            // Debug - display current cart contents
             let currentCart = JSON.parse(localStorage.getItem('cart')) || [];
             console.log("Current cart contents on product page:", currentCart);
         });
     </script>
 
-    <script src="script.js"></script>  </body>
+    <script src="script.js"></script>
+</body>
 </html>
