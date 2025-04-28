@@ -1,6 +1,4 @@
-// Very simplified cart functionality
 document.addEventListener('DOMContentLoaded', function() {
-    // Add to cart functionality
     const addButtons = document.querySelectorAll('.add-to-cart');
     addButtons.forEach(button => {
         button.addEventListener('click', function() {
@@ -10,16 +8,14 @@ document.addEventListener('DOMContentLoaded', function() {
             const name = item.querySelector('h2') ? item.querySelector('h2').textContent : (item.querySelector('h3') ? item.querySelector('h3').textContent : 'Product');
             const price = parseFloat(item.querySelector('.item-price').textContent.replace(/[^0-9.]/g, '')) || 20.00;
             const img = item.querySelector('img') ? item.querySelector('img').src : '';
-            
-            // Simple cart structure
+
             const cartItem = {
                 name: name,
                 price: price,
                 image: img,
                 quantity: 1
             };
-            
-            // Get existing cart
+
             let cart = [];
             const existingCart = localStorage.getItem('cart');
             if (existingCart) {
@@ -30,18 +26,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
             
-            // Add item to cart
             cart.push(cartItem);
-            
-            // Save cart
+
             localStorage.setItem('cart', JSON.stringify(cart));
-            
-            // Show confirmation
+
             alert(name + " added to cart!");
         });
     });
-    
-    // Display cart items
+
     const cartContainer = document.getElementById('cart-container');
     if (cartContainer) {
         let cartItems = [];
@@ -109,7 +101,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Helper functions
 function removeItem(index) {
     let cart = [];
     try {
